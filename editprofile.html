@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile1</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+label,input,select {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#message {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>User Profile</h1>
+<form id="profileForm">
+<label for="username">Username:</label>
+<input type="text" id="username" name="username" required>
+
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone" required>
+
+<label for="country">Country:</label>
+<select id="country" name="country" required>
+  <option value="" disabled selected>Select your country</option>
+  <option value="USA">United States</option>
+  <option value="Canada">Canada</option>
+  <option value="UK">United Kingdom</option>
+  <!-- Add more options as needed -->
+</select>
+
+<label for="state">State:</label>
+<select id="state" name="state" required>
+  <option value="" disabled selected>Select your state</option>
+  <option value="">Texas</option>
+  <option value="">California</option>
+  <option value="">New York</option>
+  <!-- Add more options as needed -->
+</select>
+
+<label for="city">City:</label>
+<select id="city" name="city" required>
+  <option value="" disabled selected>Select your city</option>
+  <option value="Dallas">Dallas</option>
+  <option value="Austin">Austin</option>
+  <option value="Houston">Houston</option>
+  <!-- Add more options as needed -->
+</select>
+
+<!-- <label for="password">Change Password:</label>
+<input type="password" id="password" name="password"> -->
+
+<input type="submit" value="Save Changes">
+</form>
+
+<div id="message"></div>
+</div>
+
+<script>
+
+
+
+
+
+//for showing updated data
+
+
+
+document.getElementById('profileForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var country = document.getElementById('country').value;
+    var state = document.getElementById('state').value;
+    var city = document.getElementById('city').value;
+    var message = document.getElementById('message');
+
+    // Perform validation here
+
+// Display success message
+message.className = 'success';
+message.style.display = 'block';
+message.innerText = 'Profile updated successfully.';
+    
+    // Store the updated values in localStorage
+    var updatedProfile = {
+        username: username,
+        email: email,
+        phone: phone,
+        country: country,
+        state: state,
+        city: city
+    };
+    localStorage.setItem('updatedProfile', JSON.stringify(updatedProfile));
+    
+    // Redirect to the profile page
+    window.location.href = 'myprofile.html';
+});
+
+
+</script>
+</body>
+</html>
